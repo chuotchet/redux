@@ -1,4 +1,13 @@
-const todos = (state = [], action) => {
+type ActionType = {
+  type: string,
+  payload: {
+    id: number,
+    text: text,
+    completed: boolean
+  }
+}
+
+const todos = (state = [], action: ActionType) => {
   switch (action.type) {
     case 'ADD_TODO':
       return [
