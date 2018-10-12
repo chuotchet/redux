@@ -18,7 +18,8 @@ describe('todos reducer', () => {
       {
         text: 'Run the tests',
         completed: false,
-        id: 0
+        id: 0,
+        createdTime: (new Date().toLocaleString())
       }
     ])
 
@@ -42,7 +43,8 @@ describe('todos reducer', () => {
       }, {
         text: 'Use Redux',
         completed: false,
-        id: 1
+        id: 1,
+        createdTime: (new Date().toLocaleString())
       }
     ])
 
@@ -74,7 +76,8 @@ describe('todos reducer', () => {
       }, {
         text: 'Fix the tests',
         completed: false,
-        id: 2
+        id: 2,
+        createdTime: (new Date().toLocaleString())
       }
     ])
   })
