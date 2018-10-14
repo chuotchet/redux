@@ -30,13 +30,13 @@ const setup = () => {
 };
 
 describe('Test VisibleTodoList', () => {
-    it('should match snapshot', () => {
-        const {wrapper} = setup();
-        expect(wrapper).toMatchSnapshot();
-    })
-    it('should toggle todo when click', () => {
-        const {store, wrapper} = setup();
-        wrapper.shallow().find('Todo').first().simulate('click');
-        expect(store.getActions()).toEqual([toggleTodo(0)]);
-    })
+  it('should match snapshot', () => {
+    const {wrapper} = setup();
+    expect(wrapper).toMatchSnapshot();
+  })
+  it('should toggle todo when click', () => {
+    const {store, wrapper} = setup();
+    wrapper.shallow().find('Todo').first().simulate('click');
+    expect(store.getActions()).toEqual([toggleTodo(0)]);
+  })
 });
