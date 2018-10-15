@@ -19,6 +19,15 @@ describe('AddTodo',  () => {
     expect(wrapper).toMatchSnapshot();
   })
 
+  describe('handleChange', () => {
+    it('should state value', () => {
+      const {wrapper} = setup();
+      const deeperWrapper = wrapper.shallow();
+      deeperWrapper.find('input').simulate('change', { target: { value: 'Test' }});
+      expect(deeperWrapper.state().value).toEqual('Test');
+    })
+  });
+
   describe('handleSubmit', () => {
     it('should prevent event default action', () => {
       let preventDefault = jest.fn();
@@ -36,16 +45,15 @@ describe('AddTodo',  () => {
       deeperWrapper.shallow().find('form').simulate('submit', { preventDefault });
       expect(store.getActions()).toEqual([]);
     })
-  });
-
-  describe('handleChange', () => {
-    it('should state value correctly', () => {
+    
+    it('should dispatch action and reset state value', () => {
       let preventDefault = jest.fn();
       const { store, wrapper } = setup();
       const deeperWrapper = wrapper.shallow();
       deeperWrapper.find('input').simulate('change', { target: { value: 'Test' } });
       deeperWrapper.shallow().find('form').simulate('submit', { preventDefault });
       expect(store.getActions()).toEqual([{ id: 0, text: 'Test', type: 'ADD_TODO' }]);
+      expect(deeperWrapper.state().value).toEqual('');
     })
   });
 });
